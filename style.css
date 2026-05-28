@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+main {
+    background: linear-gradient(to top ,rgb(191, 198, 236),whitesmoke,  white);
+}
+
+/* Estructura de la pagina */
+.contenedor{
+    display: grid;
+
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+    grid-template-rows: 70px 1fr 80px;
+
+    min-height: 100vh;
+}
+
+header{
+    grid-area: header;
+    background-color: lightblue;
+}
+
+main{
+    grid-area: main;
+    background-color: rgb(255, 255, 255);
+}
+
+footer{
+    grid-area: footer;
+    background-color: lightcoral;
+}
+
+
+/* Logotipo */
+.logotipo {
+    margin-top: 25px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    display: flex;
+    
+}
+
+
+/* Inicio */
+
+.bienvenida {
+     text-align: center;
+        margin-top: 40px;
+        font-size: 32px;
+        font-family:  Quicksand, sans-serif;
+        font-weight: 300;
+}
+
+.bienvenida p {
+    font-size: 18px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: rgb(165, 177, 244);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 28px;
+    margin-top: 10px;
+    font-family:  Arial, sans-serif;
+}
+
+/* Menu de Navegacion */
+
+.linea {
+  display: flex;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+}
+
+/* Generador Web */
+.generador {
+    padding: 100px;
+    margin: 100px;
+    text-align: center;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.generar {
+    margin-left: 100px;
+    text-align: left;
+}
+
+.explorar {
+     margin-right: 100px;
+    text-align: right;
+}
+
+.opciones {
+    display: flex;
+    justify-content: space-between;
+}
