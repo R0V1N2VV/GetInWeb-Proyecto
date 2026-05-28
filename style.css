@@ -2,120 +2,248 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-main {
-    background: linear-gradient(to top ,rgb(191, 198, 236),whitesmoke,  white);
+/* Colores generales */
+
+body{
+    background-color: #f7f9ff;
+    font-family: 'Quicksand', sans-serif;
 }
 
-/* Estructura de la pagina */
+/* Estructura de la página */
+
 .contenedor{
     display: grid;
-
     grid-template-areas:
     "header"
     "main"
     "footer";
-
     grid-template-rows: 70px 1fr 80px;
 
     min-height: 100vh;
 }
 
+/* HEADER */
+
 header{
     grid-area: header;
-    background-color: lightblue;
+    background-color: #c7e7f3;
+    backdrop-filter: blur(10px);
 }
+
+/* MAIN */
 
 main{
     grid-area: main;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to top,#d9ddff,#eef3ff,#ffffff);
 }
+
+/* FOOTER */
 
 footer{
     grid-area: footer;
-    background-color: lightcoral;
+    background-color: #c9c7ff;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
 }
 
+/* TITULOS Y TEXTO */
 
-/* Logotipo */
-.logotipo {
-    margin-top: 25px;
+h1{
+    color: #1f2a44;
+}
+
+p{
+    color: #4f5d75;
+}
+
+/* LOGOTIPO */
+
+.logotipo{
+    margin-top: 22px;
     margin-left: 30px;
-    font-size: 20px;
+    font-size: 22px;
     font-family: roboto, sans-serif;
+    color: #1f2a44;
+}
+
+/* MENU */
+
+.linea{
     display: flex;
-    
 }
 
-
-/* Inicio */
-
-.bienvenida {
-     text-align: center;
-        margin-top: 40px;
-        font-size: 32px;
-        font-family:  Quicksand, sans-serif;
-        font-weight: 300;
-}
-
-.bienvenida p {
-    font-size: 18px;
-}
-
-.boton {
-    display: inline-block;
-    padding: 20px 40px;
-    background-color: rgb(165, 177, 244);
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: 20px;
-    border-radius: 28px;
-    margin-top: 10px;
-    font-family:  Arial, sans-serif;
-}
-
-/* Menu de Navegacion */
-
-.linea {
-  display: flex;
-}
-
-nav ul {
+nav ul{
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     margin-top: 25px;
-    margin-left: 50px;
+    margin-left: 60px;
+}
+
+nav ol{
+    list-style: none;
 }
 
 nav a{
     text-decoration: none;
-    color: black;
+    color: #1f2a44;
     font-size: 22px;
+    transition: 0.3s;
 }
 
-/* Generador Web */
-.generador {
+nav a:hover{
+    color: #7b61ff;
+}
+
+/* BIENVENIDA */
+
+.bienvenida{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 32px;
+    font-family: Quicksand, sans-serif;
+    font-weight: 300;
+}
+
+.bienvenida h1{
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.bienvenida p{
+    font-size: 22px;
+    width: 80%;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* BOTONES */
+
+button,
+.boton{
+
+    padding: 18px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 40px;
+    border: none;
+    margin-top: 20px;
+    background-color: #8b7cff;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    transition: 0.3s;
+}
+
+button:hover,
+.boton:hover{
+    background-color: #7262f3;
+    transform: scale(1.03);
+}
+
+
+
+/* DIVISION */
+.division{
+    text-align: center;
+    background-color: #d9ddff;
+    padding: 80px;
+    margin-bottom: 0px;
+}
+/* IMAGENES */
+
+.imagen-inicio{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    border-radius: 30px;
+}
+
+.imagen-inicio img{
+    border-radius: 30px;
+    width: 47%;
+    transition: 0.3s;
+}
+
+/* INFORMACION */
+
+.informacion{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+}
+
+.izquierda{
+    grid-column: 1;
+    background-color: #ffffff;
+    padding: 80px;
+    display: flex;
+}
+
+.izquierda h1{
+    display: block;
+}
+
+.costado{
+    justify-content: left;
+}
+
+.card {
+    border: 1px solid gray;
+    padding: 15px;
+    margin: 20px;
+    background-color: white;
+    justify-content: right;
+}
+
+.card p{
+    font-size: 24px;
+    color: #4f5d75;
+    line-height: 1.6;
+}
+
+.derecha{
+    grid-column: 2;
+    background-color: #c2c6cf;
+    padding: 80px;
+}
+
+.derecha img{
+    border-radius: 30px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+img:hover{
+    transform: scale(1.03);
+
+}
+
+/* GENERADOR */
+
+.generador{
+
     padding: 100px;
     margin: 100px;
     text-align: center;
-    border: 1px solid black;
-    justify-content: center;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 30px;
+
 }
 
-.generar {
+.generar{
     margin-left: 100px;
     text-align: left;
 }
 
-.explorar {
-     margin-right: 100px;
+.explorar{
+    margin-right: 100px;
     text-align: right;
 }
 
-.opciones {
+.opciones{
     display: flex;
     justify-content: space-between;
 }
