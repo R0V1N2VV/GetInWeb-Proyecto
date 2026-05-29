@@ -169,7 +169,7 @@ button:hover,
 
 /* INFORMACION */
 
-.informacion{
+.informacion1{
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 500px;
@@ -179,19 +179,15 @@ button:hover,
     grid-column: 1;
     background-color: #ffffff;
     padding: 80px;
-    display: flex;
 }
+
 
 .izquierda h1{
     display: block;
 }
 
-.costado{
-    justify-content: left;
-}
-
 .card {
-    border: 1px solid gray;
+    border-left: 3px solid gray;
     padding: 15px;
     margin: 20px;
     background-color: white;
@@ -206,7 +202,7 @@ button:hover,
 
 .derecha{
     grid-column: 2;
-    background-color: #c2c6cf;
+    background-color: #cccfd6;
     padding: 80px;
 }
 
@@ -219,6 +215,53 @@ button:hover,
 img:hover{
     transform: scale(1.03);
 
+}
+
+/* informacion 2 */
+
+.titulo-info2{
+    text-align: center;
+    background-color: black;
+    padding-top: 50px;
+}
+
+.titulo-info2 h1{
+    color:whitesmoke;
+}
+
+.informacion2{
+    background-color: black;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color:whitesmoke;
+}
+
+.izquierda2{
+    grid-column: 1;
+    padding: 80px;
+    text-align: center;
+}
+
+.centro {
+    grid-column: 2;
+}
+
+.centro h1{
+    padding-bottom: 40px;
+}
+
+.centro img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%;
+    
+}
+
+.derecha2{
+    grid-column: 3;
+    padding: 80px;
+    text-align: center;
 }
 
 /* GENERADOR */
