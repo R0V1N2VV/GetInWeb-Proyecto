@@ -243,6 +243,11 @@ img:hover{
     text-align: center;
 }
 
+.izquierda2 img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%;
+}
 .centro {
     grid-column: 2;
 }
@@ -262,6 +267,12 @@ img:hover{
     grid-column: 3;
     padding: 80px;
     text-align: center;
+}
+
+.derecha2 img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%; 
 }
 
 /* GENERADOR */
