@@ -226,8 +226,17 @@ img:hover{
 }
 
 .titulo-info2 h1{
+    font-size: 50px;
     color:whitesmoke;
 }
+
+.titulo-info2 p{
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
 
 .informacion2{
     background-color: black;
@@ -240,7 +249,6 @@ img:hover{
 .izquierda2{
     grid-column: 1;
     padding: 80px;
-    text-align: center;
 }
 
 .izquierda2 img{
@@ -266,7 +274,6 @@ img:hover{
 .derecha2{
     grid-column: 3;
     padding: 80px;
-    text-align: center;
 }
 
 .derecha2 img{
@@ -274,6 +281,56 @@ img:hover{
     border-radius: 30px;
     width: 100%; 
 }
+
+
+/* division */
+
+.division {
+    font-size: 25px;
+}
+
+.divisions{
+
+    font-size: 25px;
+    text-align: center;
+    background-color: #c5c9f0;
+    padding: 80px;
+}
+/* informacion3 */
+
+.informacion3{
+    padding: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.izquierda3{
+    grid-column: 1;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+
+.izquierda3 img{
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.pri-izquierda3{
+grid-column: 1;
+}
+
+.seg-izquierda3{
+    grid-column: 2;
+}
+
+.derecha3{
+    grid: 2;
+    text-align: right;
+    padding: 50px;
+    border-right: 1px solid #000000;
+}
+
 
 /* GENERADOR */
 
@@ -300,4 +357,9 @@ img:hover{
 .opciones{
     display: flex;
     justify-content: space-between;
+}
+
+.foot {
+    font-size: 12px;  
+    text-align: right;
 }
