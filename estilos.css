@@ -30,6 +30,7 @@ header{
     grid-area: header;
     background-color: #c7e7f3;
     backdrop-filter: blur(10px);
+ 
 }
 
 /* MAIN */
@@ -66,18 +67,57 @@ p{
 
 /* LOGOTIPO */
 
-.logotipo{
-    margin-top: 22px;
-    margin-left: 30px;
-    font-size: 22px;
-    font-family: roboto, sans-serif;
-    color: #1f2a44;
-}
 
 /* MENU */
 
+header{
+    grid-area: header;
+    background-color: #c7e7f3;
+}
+
 .linea{
+    height: 70px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logotipo{
+    margin: 0;
+    margin-left: 60px;
+    font-size: 28px;
+    color: #1f2a44;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.menu{
+    margin-right: 60px;
+}
+
+.menu ul{
+    display: flex;
+    gap: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1f2a44;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav{
+    display:flex;
+    gap:30px;
 }
 
 nav ul{
