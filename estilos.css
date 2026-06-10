@@ -1,0 +1,446 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Colores generales */
+
+body{
+    background-color: #f7f9ff;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Estructura de la página */
+
+.contenedor{
+    display: grid;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+    grid-template-rows: 70px 1fr 80px;
+
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+header{
+    grid-area: header;
+    background-color: #c7e7f3;
+    backdrop-filter: blur(10px);
+}
+
+/* MAIN */
+
+main{
+    grid-area: main;
+    background: linear-gradient(180deg,#f8fbff 0%, #eef3ff 35%,#e3e6ff 70%,#d9ddff 100%);
+}
+
+/* FOOTER */
+
+footer{
+    grid-area: footer;
+    background-color: #c9c7ff;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+
+}
+
+.footer-nav{
+    padding-bottom: 20px;
+}
+
+/* TITULOS Y TEXTO */
+
+h1{
+    color: #1f2a44;
+}
+
+p{
+    color: #4f5d75;
+}
+
+/* LOGOTIPO */
+
+.logotipo{
+    margin-top: 22px;
+    margin-left: 30px;
+    font-size: 22px;
+    font-family: roboto, sans-serif;
+    color: #1f2a44;
+}
+
+/* MENU */
+
+.linea{
+    display: flex;
+}
+
+nav ul{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 25px;
+    margin-left: 60px;
+}
+
+nav ol{
+    list-style: none;
+}
+
+nav a{
+    text-decoration: none;
+    color: #1f2a44;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #7b61ff;
+}
+
+.nav2{
+    margin-bottom: 26px;
+    justify-content: right;
+    margin-right: auto;
+}
+
+/* BIENVENIDA */
+
+.bienvenida{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 32px;
+    font-family: Quicksand, sans-serif;
+    font-weight: 300;
+}
+
+.bienvenida h1{
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.bienvenida p{
+    font-size: 22px;
+    width: 80%;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* BOTONES */
+
+button,
+.boton{
+
+    padding: 18px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 40px;
+    border: none;
+    margin-top: 20px;
+    background-color: #8b7cff;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    transition: 0.3s;
+}
+
+button:hover,
+.boton:hover{
+    background-color: #7262f3;
+    transform: scale(1.03);
+}
+
+
+
+/* DIVISION */
+.division{
+    text-align: center;
+    background-color: #d9ddff;
+    padding: 80px;
+    margin-bottom: 0px;
+}
+/* IMAGENES */
+
+.imagen-inicio{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    border-radius: 30px;
+}
+
+.imagen-inicio img{
+    border-radius: 30px;
+    width: 47%;
+    transition: 0.3s;
+}
+
+/* INFORMACION */
+
+.informacion1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+}
+
+.izquierda{
+    grid-column: 1;
+    background-color: #ffffff;
+    padding: 80px;
+}
+
+
+.izquierda h1{
+    display: block;
+}
+
+.card {
+    border-left: 3px solid gray;
+    padding: 15px;
+    margin: 20px;
+    background-color: white;
+    justify-content: right;
+}
+
+.card p{
+    font-size: 24px;
+    color: #4f5d75;
+    line-height: 1.6;
+}
+
+.derecha{
+    grid-column: 2;
+    background-color: #cccfd6;
+    padding: 80px;
+}
+
+.derecha img{
+    border-radius: 30px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+img:hover{
+    transform: scale(1.03);
+
+}
+
+/* informacion 2 */
+
+.titulo-info2{
+    text-align: center;
+    background-color: black;
+    padding-top: 50px;
+}
+
+.titulo-info2 h1{
+    font-size: 50px;
+    color:whitesmoke;
+}
+
+.titulo-info2 p{
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
+
+.informacion2{
+    background-color: black;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color:whitesmoke;
+}
+
+.izquierda2{
+    grid-column: 1;
+    padding: 80px;
+}
+
+.izquierda2 img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%;
+}
+.centro {
+    grid-column: 2;
+}
+
+.centro h1{
+    padding-bottom: 40px;
+}
+
+.centro img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%;
+    
+}
+
+.derecha2{
+    grid-column: 3;
+    padding: 80px;
+}
+
+.derecha2 img{
+    transition: 0.3s;
+    border-radius: 30px;
+    width: 100%; 
+}
+
+
+/* division */
+
+.division {
+    font-size: 25px;
+}
+
+.divisions{
+
+    font-size: 25px;
+    text-align: center;
+    background-color: #c5c9f0;
+    padding: 80px;
+}
+
+.divisionss{
+
+    font-size: 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #d9ddff 0%, #c1c6f9 100%);
+    padding: 40px;
+}
+/* informacion3 */
+
+.informacion3{
+    padding: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.izquierda3{
+    grid-column: 1;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+
+.izquierda3 img{
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.pri-izquierda3{
+grid-column: 1;
+}
+
+.seg-izquierda3{
+    grid-column: 2;
+}
+
+.derecha3{
+    grid: 2;
+    text-align: right;
+    padding: 50px;
+    border-right: 1px solid #000000;
+}
+
+/* informacion4 */
+
+.izquierda4{
+ font-size: 20px;
+}
+
+.derecha4{
+    text-align: right;
+    font-size: 18px;
+}
+
+/* equipo */
+
+.equip{
+    background-color: #c1c6f9;
+}
+
+.equipo{
+    background-color: #c1c6f9;
+    padding: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+.card-equipo{
+
+ border: 1px solid gray;
+ text-align: center;
+ border-radius: 10px;
+ padding: 15px;
+ margin: 20px;
+ box-shadow: 0px 0px 10px lightgray;
+ background-color: #ffffffcd;
+}
+
+/* GENERADOR */
+
+.generador-titulo{
+    text-align: center;
+    background-color: #ffffffcd;
+    
+}
+
+.generador-contenido{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    border-radius: 30px;
+    background-color: #ffffffcd;
+    padding: 50px;
+    margin: 50px;
+   
+}
+
+.generador{
+
+    padding: 100px;
+    margin: 100px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 30px;
+
+}
+
+
+
+.imagen-generador img{
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.imagen-generador img:hover{
+    transform: scale(1.03);
+}
+.generar{
+    margin-left: 100px;
+    text-align: left;
+}
+
+.explorar{
+    margin-right: 100px;
+    text-align: right;
+}
+
+.opciones{
+    display: flex;
+    justify-content: space-between;
+}
+
+.foot {
+    display: flex;
+    padding-top: 20px;
+    font-size: 12px;  
+    text-align: right;
+}
