@@ -331,8 +331,27 @@ grid-column: 1;
     border-right: 1px solid #000000;
 }
 
+/* informacion4 */
+
+.izquierda4{
+ font-size: 20px;
+}
 
 /* GENERADOR */
+
+.generador-titulo{
+    text-align: center;
+    background-color: #ffffffcd;
+    
+}
+
+.generador-contenido{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #ffffffcd;
+    padding: 50px;
+    margin-top: 50px;
+}
 
 .generador{
 
@@ -344,6 +363,15 @@ grid-column: 1;
 
 }
 
+.imagen-generador img{
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.3s;
+}
+
+.imagen-generador img:hover{
+    transform: scale(1.03);
+}
 .generar{
     margin-left: 100px;
     text-align: left;
