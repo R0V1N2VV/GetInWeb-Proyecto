@@ -30,7 +30,6 @@ header{
     grid-area: header;
     background-color: #c7e7f3;
     backdrop-filter: blur(10px);
- 
 }
 
 /* MAIN */
@@ -55,6 +54,13 @@ footer{
     padding-bottom: 20px;
 }
 
+.foot {
+    display: flex;
+    padding-top: 20px;
+    font-size: 12px;  
+    text-align: right;
+}
+
 /* TITULOS Y TEXTO */
 
 h1{
@@ -70,11 +76,6 @@ p{
 
 /* MENU */
 
-header{
-    grid-area: header;
-    background-color: #c7e7f3;
-}
-
 .linea{
     height: 70px;
     display: flex;
@@ -85,14 +86,14 @@ header{
 .logotipo{
     margin: 0;
     margin-left: 60px;
-    font-size: 28px;
+    font-size: 20px;
     color: #1f2a44;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
 }
 
 .menu{
-    margin-right: 60px;
+    margin-right: 10px;
 }
 
 .menu ul{
@@ -111,64 +112,37 @@ header{
 .menu a{
     text-decoration: none;
     color: #1f2a44;
-    font-size: 20px;
+    font-size: px;
     font-weight: 600;
-}
-
-nav{
-    display:flex;
-    gap:30px;
-}
-
-nav ul{
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 25px;
-    margin-left: 60px;
-}
-
-nav ol{
-    list-style: none;
-}
-
-nav a{
-    text-decoration: none;
-    color: #1f2a44;
-    font-size: 22px;
     transition: 0.3s;
 }
 
-nav a:hover{
+.menu a:hover{
     color: #7b61ff;
 }
 
-.nav2{
-    margin-bottom: 26px;
-    justify-content: right;
-    margin-right: auto;
-}
 
 /* BIENVENIDA */
 
 .bienvenida{
     text-align: center;
-    margin-top: 60px;
+    margin-top: 32px;
     font-size: 32px;
     font-family: Quicksand, sans-serif;
     font-weight: 300;
 }
 
 .bienvenida h1{
-    font-size: 80px;
+    font-size: 55px;
     margin-bottom: 20px;
 }
 
-.bienvenida p{
-    font-size: 22px;
+.bienvenida h3{
+    font-size: 14px;
     width: 80%;
     margin: auto;
     line-height: 1.6;
+    color:#8b7cff;
 }
 
 /* BOTONES */
@@ -176,9 +150,9 @@ nav a:hover{
 button,
 .boton{
 
-    padding: 18px 40px;
+    padding: 15px 35px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     border-radius: 40px;
     border: none;
     margin-top: 20px;
@@ -203,18 +177,18 @@ button:hover,
     padding: 80px;
     margin-bottom: 0px;
 }
+
 /* IMAGENES */
 
 .imagen-inicio{
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 20px;
     border-radius: 30px;
 }
 
 .imagen-inicio img{
     border-radius: 30px;
-    width: 47%;
     transition: 0.3s;
 }
 
@@ -246,7 +220,7 @@ button:hover,
 }
 
 .card p{
-    font-size: 24px;
+    font-size: 18px;
     color: #4f5d75;
     line-height: 1.6;
 }
@@ -277,14 +251,13 @@ img:hover{
 }
 
 .titulo-info2 h1{
-    font-size: 50px;
+    font-size: 36px;
     color:whitesmoke;
 }
 
 .titulo-info2 p{
     color:white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -307,6 +280,7 @@ img:hover{
     border-radius: 30px;
     width: 100%;
 }
+
 .centro {
     grid-column: 2;
 }
@@ -337,7 +311,7 @@ img:hover{
 /* division */
 
 .division {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .divisions{
@@ -345,7 +319,7 @@ img:hover{
     font-size: 25px;
     text-align: center;
     background-color: #c5c9f0;
-    padding: 80px;
+    padding: 70px;
 }
 
 .divisionss{
@@ -355,10 +329,11 @@ img:hover{
     background: linear-gradient(180deg, #d9ddff 0%, #c1c6f9 100%);
     padding: 40px;
 }
+
 /* informacion3 */
 
 .informacion3{
-    padding: 100px;
+    padding: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -376,7 +351,7 @@ img:hover{
 }
 
 .pri-izquierda3{
-grid-column: 1;
+    grid-column: 1;
 }
 
 .seg-izquierda3{
@@ -384,10 +359,18 @@ grid-column: 1;
 }
 
 .derecha3{
-    grid: 2;
+    grid-column: 2;
     text-align: right;
-    padding: 50px;
+    padding: 40px;
     border-right: 1px solid #000000;
+}
+
+.derecha3 h1{
+    font-size:30px;
+}
+.derecha3 p{
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* informacion4 */
@@ -399,30 +382,112 @@ grid-column: 1;
 .derecha4{
     text-align: right;
     font-size: 18px;
+    font-weight: 600;
 }
 
-/* equipo */
+/* Planes */
 
-.equip{
-    background-color: #c1c6f9;
+.planes-contenido{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+
+    padding: 80px 120px;
+
+    justify-items: center;
 }
 
-.equipo{
-    background-color: #c1c6f9;
-    padding: 50px;
+.card-gratuito,
+.card-basico,
+.card-premium,
+.card-empresarial{
+    width: 100%;
+    max-width: 520px;
+    min-height: 330px;
+
+    border: 1px solid rgba(31, 42, 68, 0.25);
+    border-radius: 22px;
+
+    padding: 35px 40px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 28px rgba(31, 42, 68, 0.12);
+
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.3s;
 }
 
-.card-equipo{
+.card-gratuito,
+.card-basico{
+    background-color: #ffffffcd;
+}
 
- border: 1px solid gray;
- text-align: center;
- border-radius: 10px;
- padding: 15px;
- margin: 20px;
- box-shadow: 0px 0px 10px lightgray;
- background-color: #ffffffcd;
+.card-premium{
+    background-color: #b1a9f4;
+}
+
+.card-empresarial{
+    background-color: #9e92f8;
+}
+
+.card-gratuito:hover,
+.card-basico:hover,
+.card-premium:hover,
+.card-empresarial:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(31, 42, 68, 0.18);
+}
+
+.plan-header h1{
+    font-size: 38px;
+    margin-bottom: 5px;
+    color: #1f2a44;
+}
+
+.plan-header h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2a44;
+}
+
+.plan-info{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.plan-info p{
+    font-size: 18px;
+    font-weight: 600;
+    color: #4f5d75;
+    line-height: 1.8;
+}
+
+.boton-plan{
+    padding: 12px 32px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #8b7cff;
+    color: white;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.boton-plan:hover{
+    background-color: #7262f3;
+    transform: scale(1.04);
 }
 
 /* GENERADOR */
@@ -463,6 +528,7 @@ grid-column: 1;
 .imagen-generador img:hover{
     transform: scale(1.03);
 }
+
 .generar{
     margin-left: 100px;
     text-align: left;
@@ -476,11 +542,4 @@ grid-column: 1;
 .opciones{
     display: flex;
     justify-content: space-between;
-}
-
-.foot {
-    display: flex;
-    padding-top: 20px;
-    font-size: 12px;  
-    text-align: right;
 }
