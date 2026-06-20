@@ -35,20 +35,21 @@
 
     <main>
     <!-- bienvenida -->
-    <div class="bienvenida">
-        <h1>Crea una página web de una forma nueva</h1>
-        <h3> Aquí te damos una experiencia única para crear tu página web de manera fácil y rápida, junto a nuestro generador de planillas personalizadas</h3>
-  
-        <button class="boton"><strong>Comenzar Ya</strong></button>
-
-    </div>
+    <div class="inicio-color">
     
-    <div class="imagen-inicio">
-        <img src="https://static.wixstatic.com/media/0784b1_636e025454fa4d40a2374266c91e07b8~mv2.jpg/v1/fill/w_728,h_455,al_c,q_80,enc_avif,quality_auto/cans-reduced.jpg" width="728px" height="400px" alt="Imagen de bienvenida"> 
-    </div>
+        <div class="bienvenida">
+            <h1>Crea una página web de una forma nueva</h1>
+            <h3> Aquí te damos una experiencia única para crear tu página web de manera fácil y rápida, junto a nuestro generador de planillas personalizadas</h3>
+  
+            <button class="boton"><strong>Comenzar Ya</strong></button>
+        </div>
+    
+        <div class="imagen-inicio">
+            <img src="https://static.wixstatic.com/media/0784b1_636e025454fa4d40a2374266c91e07b8~mv2.jpg/v1/fill/w_728,h_455,al_c,q_80,enc_avif,quality_auto/cans-reduced.jpg" width="500px" height="300px" alt="Imagen de bienvenida"> 
+        </div>
 
-    <br><br><br><br><br>
-   
+        <br><br><br><br><br>
+    </div>
     <!--division-->
     <div class="division">
         <h1>¿Por qué elegirnos?</h1>
@@ -57,7 +58,7 @@
     
     <!-- informacion sobre la pagina-->
 
-    <div class="informacion1">
+    <div class="informacion1 aparecer">
 
     
         <div class="izquierda">
@@ -93,7 +94,7 @@
         <p>Explora nuestro catalogo de plantillas ya personalizadas y creadas para tu uso en proyectos diariamente</p>
     </div>
     
-    <div class="informacion2">
+    <div class="informacion2 ">
         
             <div class="izquierda2">
                 <img src="imgs/eso.png">    
@@ -110,19 +111,23 @@
 
 
 
-    <div class="informacion3">
+    <div class="informacion3 aparecer">
         
         <div class="izquierda3">
             
             <div class="pri-izquierda3">
-                <img src="imgs/es.avif" width="200px" height="200px">
-                <img src="imgs/desig.png" width="200px" height="200px">
+                <img src="https://static.wixstatic.com/media/110ec7_29c3c950c65d44c9a3106b9bba6a0d98~mv2.png/v1/fill/w_924,h_2019,al_c,q_90,enc_avif,quality_auto/110ec7_29c3c950c65d44c9a3106b9bba6a0d98~mv2.png" width="150px" height="500px">
+                
 
             </div>
-
+            
             <div class="seg-izquierda3"> 
-                <img src="https://images01.nicepagecdn.com/page/31/62/es/plantilla-html-31627.jpg" width="250px" height="500px">
+                <img src="https://static.wixstatic.com/media/110ec7_10be33f8cf9c40feb0a0f89a993f5dac~mv2.png/v1/fill/w_924,h_2411,al_c,q_95,enc_avif,quality_auto/110ec7_10be33f8cf9c40feb0a0f89a993f5dac~mv2.png" width="150px" height="500px">
               
+            </div>
+
+            <div class="ter-izquierda3">
+                <img src="https://static.wixstatic.com/media/110ec7_44bfb3739bd24c2bab5fbf852fc54800~mv2.png/v1/fill/w_924,h_2288,al_c,q_95,enc_avif,quality_auto/110ec7_44bfb3739bd24c2bab5fbf852fc54800~mv2.png" width="150px" height="500px">
             </div>
 
         </div>
@@ -142,15 +147,15 @@
     
     </div>
 
-    <div class="divisions">
+    <div class="divisions aparecer">
         <h1>Nuestra invencion</h1>
     </div>
 
-    <div class="generador-contenido">
+    <div class="generador-contenido aparecer">
 
 
         <div class="imagen-generador">
-            <img src="imgs/generador.png" width="650px" height="430px">
+            <img src="imgs/generador.png" width="600px" height="400px">
             <br><br><br>
           
         </div>
@@ -160,8 +165,8 @@
             <h1>Genera tu propia plantilla personalizada</h1>
             <br>
             <p>Con nuestro generador de plantillas, puedes crear diseños personalizados para tu página web de manera fácil y rápida. Elige entre una amplia variedad de opciones de diseño, colores, fuentes y estilos para crear una plantilla única que se adapte a tus necesidades y refleje tu estilo personal. ¡Comienza a diseñar tu página web hoy mismo con nuestro generador de plantillas!</p>
-            <br><br><br><br>  
-            <a href="Personalizador/index.html" class="boton"><strong>Generar Plantilla</strong></a>
+            <br><br><br><br><br><br>
+            <a href="Personalizador/index.html" class="boton1"><strong>Generar Plantilla</strong></a>
         </div>
     </div>
 
@@ -292,5 +297,20 @@
 
  </div>
 
+ <script>
+    const elementos = document.querySelectorAll('.aparecer');
+
+    const mostrarElemento = new IntersectionObserver((entradas) => {
+        entradas.forEach((entrada) => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('visible');
+            }
+        });
+    });
+
+    elementos.forEach((elemento) => {
+        mostrarElemento.observe(elemento);
+    });
+</script>
 </body>
 </html>

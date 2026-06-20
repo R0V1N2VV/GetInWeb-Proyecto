@@ -7,7 +7,9 @@
 /* Colores generales */
 
 body{
+    
     background-color: #f7f9ff;
+   
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -28,15 +30,21 @@ body{
 
 header{
     grid-area: header;
-    background-color: #c7e7f3;
+    background-color: #d9ddff;
     backdrop-filter: blur(10px);
 }
 
+/*inicio*/
+
+.inicio-color{
+    background: linear-gradient(180deg,#f8fbff 0%, #eef3ff 35%,#e3e6ff 70%,#d9ddff 100%);
+}
 /* MAIN */
 
 main{
     grid-area: main;
-    background: linear-gradient(180deg,#f8fbff 0%, #eef3ff 35%,#e3e6ff 70%,#d9ddff 100%);
+     background: linear-gradient(180deg,#f8fbff 0%, #eef3ff 35%,#e3e6ff 70%,#f7f9ff 100%);
+    
 }
 
 /* FOOTER */
@@ -126,7 +134,7 @@ p{
 
 .bienvenida{
     text-align: center;
-    margin-top: 32px;
+    margin-top: 20px;
     font-size: 32px;
     font-family: Quicksand, sans-serif;
     font-weight: 300;
@@ -134,12 +142,12 @@ p{
 
 .bienvenida h1{
     font-size: 55px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .bienvenida h3{
     font-size: 14px;
-    width: 80%;
+    padding-top: 2px;
     margin: auto;
     line-height: 1.6;
     color:#8b7cff;
@@ -176,6 +184,7 @@ button:hover,
     background-color: #d9ddff;
     padding: 80px;
     margin-bottom: 0px;
+     border-bottom: 3px solid #cccfd6;
 }
 
 /* IMAGENES */
@@ -264,7 +273,7 @@ img:hover{
 
 .informacion2{
     background-color: black;
-    padding: 50px;
+    padding: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     color:whitesmoke;
@@ -311,15 +320,19 @@ img:hover{
 /* division */
 
 .division {
-    font-size: 22px;
+    font-size: 20px;
+    padding: 50px;
+    border-top-color: 3px solid#111111;
 }
 
 .divisions{
 
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
-    background-color: #c5c9f0;
-    padding: 70px;
+
+    
+    padding: 50px;
+    
 }
 
 .divisionss{
@@ -339,9 +352,8 @@ img:hover{
 }
 
 .izquierda3{
-    grid-column: 1;
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap:20px;
 }
 
@@ -351,11 +363,15 @@ img:hover{
 }
 
 .pri-izquierda3{
-    grid-column: 1;
+  margin-top: 20px;
 }
 
 .seg-izquierda3{
-    grid-column: 2;
+    margin-top: 20px;
+}
+
+.ter-izquierda3{
+    margin-top: 20px;
 }
 
 .derecha3{
@@ -380,11 +396,30 @@ img:hover{
 }
 
 .derecha4{
+    margin-bottom: 50px;
+    margin-left: 50px;
     text-align: right;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
 }
 
+.derecha4 h1{
+    font-size: 30px;
+}
+
+.boton1{
+    padding: 15px 35px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 40px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: #8b7cff;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    transition: 0.3s;
+}
 /* Planes */
 
 .planes-contenido{
@@ -542,4 +577,17 @@ img:hover{
 .opciones{
     display: flex;
     justify-content: space-between;
+}
+
+
+/*animacion*/
+.aparecer{
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1.2s ease;
+}
+
+.aparecer.visible{
+    opacity: 1;
+    transform: translateY(0);
 }
