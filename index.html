@@ -55,63 +55,91 @@
     </div>
 
     <!--division-->
-    <div class="division">
+  <section class="seccion-elegirnos aparecer">
+
+    <div class="titulo-elegirnos">
+        <span class="decoracion-titulo"></span>
         <h1>¿Por qué elegirnos?</h1>
+        <div class="linea-titulo"></div>
     </div>
-    
-    
-    <!-- informacion sobre la pagina-->
 
-    <div class="informacion1 aparecer">
+    <div class="elegirnos-contenido">
 
-    
-        <div class="izquierda">
-          <h1>Obten nuevas ideas</h1>
+        <div class="elegirnos-texto">
 
-            <div class="card">
-                <p><strong>Variedad de plantillas personalizadas para tus proyectos</strong></p>
+            <div class="subtitulo-elegirnos">
+                <div class="icono-principal"></div>
+                <h2>Obten nuevas ideas</h2>
+            </div>
 
-                    <br><br>
+            <div class="beneficio-card">
+                <span>✓</span>
+                <p>Variedad de plantillas personalizadas para tus proyectos</p>
+            </div>
 
-                <p><strong>Nuevos estilos creativos con gran desarrollo</strong></p>
+            <div class="beneficio-card">
+                <span>✓</span>
+                <p>Nuevos estilos creativos con gran desarrollo</p>
+            </div>
 
-                    <br><br>
+            <div class="beneficio-card">
+                <span>✓</span>
+                <p>Estilos únicos creados por usuarios diversos</p>
+            </div>
 
-                <p><strong>Estilos unicos creados por usuarios diversos</strong></p>
-
-                    <br><br>
-
-                <p><strong>Genera plantillas a tu gusto en base a nuestro generador personalizado</strong></p>
-            </div> 
+            <div class="beneficio-card">
+                <span>✓</span>
+                <p>Genera plantillas a tu gusto en base a nuestro generador personalizado</p>
+            </div>
 
         </div>
 
-        <div class="derecha">
-           <img src="https://graffica.info/wp-content/uploads/2017/10/03-970x599.jpg" alt="Imagen de información" >
+        <div class="elegirnos-imagen">
+            <img src="https://graffica.info/wp-content/uploads/2017/10/03-970x599.jpg" alt="Plantillas web">
         </div>
+
     </div>
 
+</section>
+
+
+    <section class="plantillas-carrusel aparecer">
 
     <div class="titulo-info2">
         <h1>Plantillas Web creadas para tu uso y lograr tus mayores ambiciones</h1>
         <br>
-        <p>Explora nuestro catalogo de plantillas ya personalizadas y creadas para tu uso en proyectos diariamente</p>
+        <p>Explora nuestro catálogo de plantillas personalizadas y creadas para usar en tus proyectos diariamente</p>
     </div>
-    
-    <div class="informacion2">
-        
-            <div class="izquierda2">
-                <img src="imgs/eso.png" alt="Plantilla web">    
+
+    <div class="carrusel-contenedor">
+
+        <button class="carrusel-btn" id="btnCarruselIzq"> ‹ </button>
+
+        <div class="carrusel-ventana" id="carruselPlantillas">
+
+            <div class="slide-plantilla">
+                <img src="imgs/eso.png" alt="Plantilla web">
             </div>
 
-            <div class="centro">
+            <div class="slide-plantilla">
                 <img src="imgs/tour.jpg" alt="Plantilla web">
             </div>
 
-            <div class="derecha2">
+            <div class="slide-plantilla">
                 <img src="imgs/desig.png" alt="Plantilla web">
             </div>
+
+            <div class="slide-plantilla">
+                <img src="https://images01.nicepagecdn.com/page/31/62/es/plantilla-html-31627.jpg" alt="Plantilla web">
+            </div>
+
+        </div>
+
+        <button class="carrusel-btn" id="btnCarruselDer"> › </button>
+
     </div>
+
+    </section>
 
 
 
@@ -421,6 +449,25 @@
         } else {
             btnPlanes.textContent = "Ver planes ↓";
         }
+    });
+</script>
+<script>
+    const carruselPlantillas = document.getElementById("carruselPlantillas");
+    const btnCarruselIzq = document.getElementById("btnCarruselIzq");
+    const btnCarruselDer = document.getElementById("btnCarruselDer");
+
+    btnCarruselDer.addEventListener("click", function(){
+        carruselPlantillas.scrollBy({
+            left: 400,
+            behavior: "smooth"
+        });
+    });
+
+    btnCarruselIzq.addEventListener("click", function(){
+        carruselPlantillas.scrollBy({
+            left: -400,
+            behavior: "smooth"
+        });
     });
 </script>
 </body>
