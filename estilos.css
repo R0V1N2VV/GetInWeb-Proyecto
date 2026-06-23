@@ -224,6 +224,7 @@ p{
 
 .bienvenida{
     text-align: center;
+    margin-top: 20px;
     padding: 0 30px;
     font-size: 32px;
     font-family: Quicksand, sans-serif;
@@ -238,7 +239,7 @@ p{
 
 .bienvenida h3{
     font-size: 14px;
-   
+    padding-top: 2px;
     max-width: 900px;
     margin: auto;
     line-height: 1.6;
@@ -646,9 +647,15 @@ img:hover{
 
 /* responsive */
 
+@media (max-width: 980px){
+    .planes-contenido{
+        grid-template-columns: 1fr;
+    }
 
-/* responsive anterior eliminado para evitar conflictos */
-
+    .card-plan{
+        min-height: auto;
+    }
+}
 
 /* DESPLEGAR PLANES */
 
@@ -984,39 +991,994 @@ img{
 }
 
 /* TABLET */
+@media (max-width: 980px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .contenedor{
+        grid-template-rows: auto 1fr auto;
+    }
 
+    /* HEADER */
+
+    header{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-contenido,
+    .linea{
+        width: 100%;
+        height: auto;
+        min-height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 15px 30px;
+    }
+
+    .logotipo{
+        margin: 0;
+        font-size: 20px;
+        white-space: nowrap;                    
+    }
+
+    .menu{
+        margin: 0;
+    }
+
+    .menu ul{
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu a{
+        font-size: 16px;
+    }
+
+    .btn-header{
+        display: none;
+    }
+
+    /* INICIO */
+
+    .inicio-color{
+        padding: 40px 20px 70px 20px;
+    }
+
+    .bienvenida{
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    .bienvenida h1{
+        font-size: 42px;
+        line-height: 1.15;
+        max-width: 900px;
+        margin: 0 auto 18px auto;
+    }
+
+    .bienvenida h3{
+        max-width: 750px;
+        font-size: 15px;
+    }
+
+    .imagen-inicio img{
+        width: 80%;
+        max-width: 560px;
+        height: auto;
+    }
+
+    /* INFORMACION 1 */
+
+    .informacion1{
+        grid-template-columns: 1fr;
+    }
+
+    .izquierda,
+    .derecha{
+        grid-column: auto;
+        padding: 45px;
+    }
+
+    .derecha{
+        justify-content: center;
+    }
+
+    /* PLANTILLAS NEGRAS */
+
+    .informacion2{
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 35px;
+        gap: 20px;
+    }
+
+    .izquierda2,
+    .centro,
+    .derecha2{
+        padding: 10px;
+    }
+
+    /* EXPLORAR PLANTILLAS */
+
+    .informacion3{
+        grid-template-columns: 1fr;
+        padding: 55px 40px;
+        gap: 35px;
+    }
+
+    .izquierda3{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .izquierda3 img{
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .derecha3{
+        grid-column: auto;
+        text-align: center;
+        border-right: none;
+        border-top: 1px solid rgba(31,42,68,0.35);
+        padding: 35px 10px 0 10px;
+    }
+
+    .derecha3 h1{
+        font-size: 32px;
+    }
+
+    .derecha3 p{
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* GENERADOR */
+
+    .generador-contenido{
+        grid-template-columns: 1fr;
+        width: 92%;
+        padding: 38px;
+        text-align: center;
+    }
+
+    .derecha4{
+        margin: 0;
+        text-align: center;
+    }
+
+    .imagen-generador{
+        display: flex;
+        justify-content: center;
+    }
+
+    /* PLANES */
+
+    .titulo-planes{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .titulo-planes h1,
+    .titulo-planes p{
+        text-align: center;
+    }
+
+    .planes-contenido{
+        grid-template-columns: 1fr;
+    }
+
+    /* FINAL */
+
+    .mensaje-final p{
+        width: 85%;
+    }
+
+    .faq-seccion{
+        padding: 70px 50px;
+    }
+
+    /* FOOTER */
+
+    .footer-contenido{
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .footer-marca p{
+        margin: auto;
+    }
+
+    .footer-links{
+        align-items: center;
+    }
+}
 
 
 /* CELULAR */
+@media (max-width: 600px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    /* HEADER */
 
+    .contenedor{
+        grid-template-rows: auto 1fr auto;
+    }
+
+    header{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-contenido,
+    .linea{
+        width: 100%;
+        height: auto;
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 14px 15px;
+        gap: 12px;                                                                                                                                            
+    }
+
+    .marca{                         
+        text-align: center;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        align-items: center;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    }
+
+    .logotipo{
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .marca span{
+        font-size: 11px;
+    }
+
+    .menu{
+        width: 100%;
+        margin: 0;
+    }
+
+    .menu ul{
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+
+        margin: 0;
+        padding: 0 10px;
+    }
+
+    .menu ol{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu a{
+        display: block;
+
+        text-align: center;
+
+        font-size: 14px;
+        padding: 9px 10px;
+
+        background-color: rgba(255,255,255,0.55);
+        border-radius: 999px;
+
+        white-space: nowrap;
+    }
+
+    .btn-header{
+        display: none;
+    }
+
+    /* INICIO */
+
+    .inicio-color{
+        padding: 35px 15px 55px 15px;
+    }
+
+    .bienvenida{
+        margin-top: 15px;
+        padding: 0;
+    }
+
+    .bienvenida h1{
+        font-size: 32px;
+        line-height: 1.15;
+
+        max-width: 100%;
+        margin: 0 auto 16px auto;
+    }
+
+    .bienvenida h3{
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 95%;
+    }
+
+    .boton,
+    button,
+    .boton1{
+        padding: 13px 28px;
+        font-size: 15px;
+    }
+
+    .imagen-inicio{
+        margin-top: 25px;
+    }
+
+    .imagen-inicio img{
+        width: 92%;
+        max-width: 390px;
+        height: auto;
+        border-radius: 22px;
+    }
+
+    /* DIVISIONES */
+
+    .division,
+    .divisions{
+        padding: 42px 20px;
+    }
+
+    .division h1,
+    .divisions h1,
+    .divisionss h1{
+        font-size: 30px;
+    }
+
+    /* INFORMACION 1 */
+
+    .informacion1{
+        grid-template-columns: 1fr;
+    }
+
+    .izquierda,
+    .derecha{
+        padding: 35px 24px;
+    }
+
+    .izquierda h1{
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .card{
+        margin: 20px 0;
+    }
+
+    .card p{
+        font-size: 15px;
+    }
+
+    /* SECCION NEGRA */
+
+    .titulo-info2{
+        padding: 42px 22px 18px 22px;
+    }
+
+    .titulo-info2 h1{
+        font-size: 28px;
+    }
+
+    .titulo-info2 p{
+        font-size: 15px;
+    }
+
+    .informacion2{
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 22px;
+    }
+
+    .izquierda2,
+    .centro,
+    .derecha2{
+        grid-column: auto;
+        padding: 0;
+    }
+
+    .informacion2 img{
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    /* EXPLORAR PLANTILLAS */
+
+    .informacion3{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .izquierda3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .pri-izquierda3,
+    .seg-izquierda3,
+    .ter-izquierda3{
+        margin-top: 0;
+    }
+
+    .izquierda3 img{
+        width: 100%;
+        height: 260px;
+
+        object-fit: cover;
+        object-position: top;
+
+        border-radius: 16px;
+    }
+
+    .derecha3{
+        text-align: center;
+        border-right: none;
+        border-top: 1px solid rgba(31,42,68,0.35);
+        padding: 30px 0 0 0;
+    }
+
+    .derecha3 h1{
+        font-size: 28px;
+    }
+
+    .derecha3 p{
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* GENERADOR */
+
+    .generador-contenido{
+        width: 92%;
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+        margin: 35px auto;
+        border-radius: 24px;
+        gap: 25px;
+    }
+
+    .imagen-generador img{
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+    }
+
+    .derecha4{
+        margin: 0;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .derecha4 h1{
+        font-size: 28px;
+    }
+
+    .derecha4 p{
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* PLANES */
+
+    .seccion-planes{
+        padding: 45px 0;
+    }
+
+    .divisionss{
+        padding: 0 20px 30px 20px;
+    }
+
+    .titulo-planes{
+        gap: 20px;
+    }
+
+    .titulo-planes p{
+        font-size: 15px;
+    }
+
+    .btn-ver-planes{
+        width: 100%;
+        max-width: 260px;
+        font-size: 15px;
+        padding: 13px 24px;
+    }
+
+    .planes-contenido{
+        width: 92%;
+        gap: 25px;
+    }
+
+    .planes-contenido.mostrar{
+        padding-top: 25px;
+        padding-bottom: 45px;
+    }
+
+    .card-plan{
+        padding: 24px;
+        min-height: auto;
+        border-radius: 22px;
+    }
+
+    .plan-top h2{
+        font-size: 28px;
+    }
+
+    .numero{
+        font-size: 46px;
+    }
+
+    .texto-precio{
+        font-size: 31px;
+    }
+
+    .descripcion-plan{
+        font-size: 15px;
+    }
+
+    .plan-info p{
+        font-size: 15px;
+    }
+
+    .boton-plan{
+        font-size: 15px;
+        padding: 13px 18px;
+    }
+
+    /* MENSAJE FINAL */
+
+    .mensaje-final{
+        padding: 70px 24px;
+    }
+
+    .mensaje-final h1{
+        font-size: 31px;
+    }
+
+    .mensaje-final p{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    /* FAQ */
+
+    .faq-seccion{
+        padding: 65px 22px;
+    }
+
+    .faq-titulo h1{
+        font-size: 31px;
+    }
+
+    .faq-titulo p{
+        font-size: 15px;
+    }
+
+    .faq-item{
+        padding: 22px;
+    }
+
+    .faq-item summary{
+        font-size: 17px;
+    }
+
+    .faq-item p{
+        font-size: 15px;
+    }
+
+    /* FOOTER */
+
+    footer{
+        padding: 50px 24px 25px 24px;
+    }
+
+    .footer-marca h2{
+        font-size: 28px;
+    }
+
+    .footer-marca p{
+        font-size: 15px;
+    }
+
+    .footer-links h3{
+        font-size: 18px;
+    }
+
+    .footer-final p{
+        font-size: 12px;
+    }
+}
 
 
 /* CELULAR MUY CHICO */
+@media (max-width: 380px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .bienvenida h1{
+        font-size: 29px;
+    }
 
+    .menu a{
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .division h1,
+    .divisions h1,
+    .divisionss h1{
+        font-size: 27px;
+    }
+
+    .izquierda3 img{
+        height: 220px;
+    }
+
+    .plan-top h2{
+        font-size: 25px;
+    }
+
+    .numero{
+        font-size: 42px;
+    }
+}
 /* RESPONSIVE PARA COMPUTADORAS */
 
 /* NOTEBOOKS CHICAS */
+@media (min-width: 981px) and (max-width: 1280px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .header-contenido,
+    .linea{
+        width: 94%;
+        margin: auto;
+    }
 
+    .logotipo{
+        font-size: 18px;
+    }
+
+    .menu ul{
+        gap: 28px;
+    }
+
+    .menu a{
+        font-size: 16px;
+    }
+
+    .bienvenida h1{
+        font-size: 44px;
+    }
+
+    .bienvenida h3{
+        max-width: 780px;
+        font-size: 14px;
+    }
+
+    .imagen-inicio img{
+        max-width: 520px;
+        width: 55%;
+        height: auto;
+    }
+
+    .division{
+        padding: 45px;
+    }
+
+    .izquierda,
+    .derecha{
+        padding: 55px;
+    }
+
+    .card p{
+        font-size: 16px;
+    }
+
+    .titulo-info2 h1{
+        font-size: 32px;
+    }
+
+    .titulo-info2 p{
+        font-size: 16px;
+    }
+
+    .informacion2{
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .izquierda2,
+    .derecha2{
+        padding: 40px;
+    }
+
+    .informacion3{
+        padding: 60px;
+        gap: 35px;
+    }
+
+    .izquierda3{
+        gap: 14px;
+    }
+
+    .izquierda3 img{
+        height: 430px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .derecha3{
+        padding: 30px;
+    }
+
+    .derecha3 h1{
+        font-size: 28px;
+    }
+
+    .derecha3 p{
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .generador-contenido{
+        width: 92%;
+        padding: 40px;
+        gap: 35px;
+    }
+
+    .imagen-generador img{
+        max-width: 500px;
+    }
+
+    .derecha4 h1{
+        font-size: 30px;
+    }
+
+    .derecha4 p{
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .planes-contenido{
+        max-width: 1050px;
+        gap: 28px;
+    }
+
+    .card-plan{
+        min-height: 480px;
+    }
+
+    .plan-top h2{
+        font-size: 30px;
+    }
+
+    .numero{
+        font-size: 50px;
+    }
+
+    .texto-precio{
+        font-size: 34px;
+    }
+
+    .plan-info p{
+        font-size: 15px;
+    }
+
+    .mensaje-final p{
+        width: 75%;
+        font-size: 18px;
+    }
+
+    .faq-seccion{
+        padding: 80px 80px;
+    }
+
+    .footer-contenido{
+        max-width: 1050px;
+        gap: 45px;
+    }
+}
 
 
 /* MONITORES NORMALES */
+@media (min-width: 1281px) and (max-width: 1600px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .header-contenido,
+    .linea{
+        width: 92%;
+        margin: auto;
+    }
 
+    .bienvenida h1{
+        font-size: 55px;
+    }
+
+    .bienvenida h3{
+        max-width: 900px;
+    }
+
+    .imagen-inicio img{
+        max-width: 560px;
+        width: 45%;
+        height: auto;
+    }
+
+    .informacion1,
+    .informacion3,
+    .generador-contenido,
+    .planes-contenido,
+    .footer-contenido{
+        max-width: 1250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .informacion1{
+        width: 100%;
+    }
+
+    .informacion3{
+        width: 100%;
+    }
+
+    .generador-contenido{
+        width: 90%;
+    }
+
+    .planes-contenido{
+        width: 90%;
+    }
+}
 
 
 /* MONITORES GRANDES */
+@media (min-width: 1601px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .header-contenido,
+    .linea{
+        max-width: 1450px;
+        width: 90%;
+        margin: auto;
+    }
 
+    .bienvenida{
+        margin-top: 55px;
+    }
+
+    .bienvenida h1{
+        font-size: 68px;
+    }
+
+    .bienvenida h3{
+        max-width: 1000px;
+        font-size: 17px;
+    }
+
+    .imagen-inicio img{
+        max-width: 700px;
+        width: 42%;
+        height: auto;
+    }
+
+    .division,
+    .divisions{
+        padding: 70px;
+    }
+
+    .informacion1{
+        max-width: 1450px;
+        margin: auto;
+    }
+
+    .izquierda,
+    .derecha{
+        padding: 85px;
+    }
+
+    .card p{
+        font-size: 20px;
+    }
+
+    .titulo-info2 h1{
+        font-size: 44px;
+    }
+
+    .titulo-info2 p{
+        font-size: 20px;
+    }
+
+    .informacion2{
+        padding: 60px;
+        gap: 40px;
+    }
+
+    .izquierda2,
+    .derecha2{
+        padding: 70px;
+    }
+
+    .informacion3{
+        max-width: 1450px;
+        margin: auto;
+        padding: 90px 70px;
+        gap: 60px;
+    }
+
+    .izquierda3 img{
+        height: 560px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .derecha3 h1{
+        font-size: 40px;
+    }
+
+    .derecha3 p{
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .generador-contenido{
+        max-width: 1450px;
+        padding: 60px;
+        gap: 60px;
+    }
+
+    .imagen-generador img{
+        max-width: 680px;
+    }
+
+    .derecha4 h1{
+        font-size: 42px;
+    }
+
+    .derecha4 p{
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .planes-contenido{
+        max-width: 1400px;
+        gap: 45px;
+    }
+
+    .card-plan{
+        min-height: 560px;
+        padding: 38px;
+    }
+
+    .mensaje-final p{
+        max-width: 950px;
+        font-size: 21px;
+    }
+
+    .faq-contenido{
+        max-width: 1050px;
+    }
+
+    .footer-contenido{
+        max-width: 1400px;
+    }
+}
 
 /* ARREGLO SECCION ¿POR QUÉ ELEGIRNOS? */
 
@@ -1215,9 +2177,47 @@ img{
     transform: scale(1.08);
 }
 
+@media (max-width: 600px){
 
-/* responsive anterior eliminado para evitar conflictos */
+    .informacion1{
+        grid-template-columns: 1fr;
+        padding: 45px 24px;
+        gap: 35px;
+    }
 
+    .derecha img{
+        max-width: 100%;
+    }
+
+    .titulo-info2 h1{
+        font-size: 28px;
+    }
+
+    .titulo-info2 p{
+        font-size: 15px;
+    }
+
+    .carrusel-contenedor{
+        width: 100%;
+        gap: 8px;
+        padding: 0 10px;
+    }
+
+    .slide-plantilla{
+        min-width: 260px;
+    }
+
+    .slide-plantilla img{
+        height: 190px;
+        border-radius: 20px;
+    }
+
+    .carrusel-btn{
+        width: 38px;
+        height: 38px;
+        font-size: 28px;
+    }
+}
 
 /* ¿POR QUÉ ELEGIRNOS? */
 
@@ -1361,8 +2361,8 @@ img{
 }
 
 /* ========================================================= */
-/* RESPONSIVE LIMPIO FINAL - GETINWEB                         */
-/* Este bloque reemplaza todos los responsive anteriores.      */
+/* CORRECCION FINAL RESPONSIVE + BARRA HORIZONTAL - GETINWEB */
+/* Pegar al final o usar este archivo completo como estilos.css */
 /* ========================================================= */
 
 *{
@@ -1381,7 +2381,23 @@ body{
     background-color: #f7f9ff;
 }
 
-
+.contenedor,
+main,
+header,
+footer,
+.inicio-color,
+.seccion-elegirnos,
+.plantillas-carrusel,
+.informacion3,
+.divisions,
+.generador-contenido,
+.seccion-planes,
+.mensaje-final,
+.faq-seccion{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 img{
     max-width: 100%;
@@ -1391,26 +2407,82 @@ img{
     grid-template-rows: 70px auto auto;
 }
 
+/* HEADER ACTUAL */
+
 .header-contenido{
+    width: 92%;
     max-width: 1400px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.menu ul{
+    margin: 0;
+    padding: 0;
+}
+
+.menu ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .btn-header{
     white-space: nowrap;
 }
 
-/* Corrige el carrusel para que no cree barra horizontal */
+/* INICIO */
+
+.inicio-color{
+    overflow: hidden;
+}
+
+.bienvenida{
+    width: 100%;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bienvenida h1,
+.bienvenida h3{
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.imagen-inicio{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-inicio img{
+    width: min(800px, 92vw);
+    max-width: 100%;
+    height: auto;
+}
+
+/* CARRUSEL: evita que las flechas o el scroll interno creen barra horizontal */
 
 .plantillas-carrusel{
     overflow: hidden;
 }
 
 .carrusel-contenedor{
+    width: 88%;
+    max-width: 1180px;
+    margin: auto;
     position: relative;
     overflow: hidden;
 }
 
 .carrusel-ventana{
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
@@ -1438,58 +2510,6 @@ img{
     transform: translateY(-50%) scale(1.08);
 }
 
-
-
-@media (min-width: 981px) and (max-width: 1280px){
-
-    .menu{
-    max-width: 100%;
-    overflow-x: hidden;
-    }
-
-    .header-contenido{
-        width: 94%;
-    }
-
-    .menu ul{
-        gap: 28px;
-    }
-
-    .menu a{
-        font-size: 16px;
-    }
-
-    .bienvenida h1{
-        font-size: 44px;
-    }
-
-    .bienvenida h3{
-        max-width: 780px;
-        font-size: 14px;
-    }
-
-    .imagen-inicio img{
-        max-width: 460px;
-        width: 55%;
-        height: auto;
-    }
-
-    .informacion3{
-        padding: 60px;
-    }
-
-    .izquierda3 img{
-        height: 430px;
-        object-fit: cover;
-        object-position: top;
-    }
-
-    .generador-contenido{
-        width: 92%;
-        padding: 40px;
-    }
-}
-
 /* TABLET */
 
 @media (max-width: 980px){
@@ -1503,38 +2523,6 @@ img{
         height: auto;
         min-height: 70px;
         padding: 15px 20px;
-        gap: 20px;
-    }
-
-    .btn-header{
-        display: none;
-    }
-
-    .inicio-color{
-        padding: 45px 20px 70px 20px;
-    }
-
-    .bienvenida{
-        padding: 0 20px;
-        margin-top: 25px;
-    }
-
-    .bienvenida h1{
-        font-size: 42px;
-        line-height: 1.15;
-        max-width: 900px;
-        margin: 0 auto 18px auto;
-    }
-
-    .bienvenida h3{
-        max-width: 750px;
-        font-size: 15px;
-    }
-
-    .imagen-inicio img{
-        width: 80%;
-        max-width: 560px;
-        height: auto;
     }
 
     .seccion-elegirnos{
@@ -1566,88 +2554,6 @@ img{
         height: 340px;
         object-fit: cover;
     }
-
-    .informacion3{
-        grid-template-columns: 1fr;
-        padding: 55px 40px;
-        gap: 35px;
-    }
-
-    .izquierda3{
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-    }
-
-    .izquierda3 img{
-        width: 100%;
-        height: 420px;
-        object-fit: cover;
-        object-position: top;
-    }
-
-    .derecha3{
-        text-align: center;
-        border-right: none;
-        border-top: 1px solid rgba(31,42,68,0.35);
-        padding: 35px 10px 0 10px;
-    }
-
-    .generador-contenido{
-        grid-template-columns: 1fr;
-        width: 92%;
-        padding: 38px;
-        text-align: center;
-    }
-
-    .derecha4{
-        margin: 0;
-        text-align: center;
-    }
-
-    .imagen-generador{
-        display: flex;
-        justify-content: center;
-    }
-
-    .titulo-planes{
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .titulo-planes h1,
-    .titulo-planes p{
-        text-align: center;
-    }
-
-    .planes-contenido{
-        grid-template-columns: 1fr;
-    }
-
-    .card-plan{
-        min-height: auto;
-    }
-
-    .mensaje-final p{
-        width: 85%;
-    }
-
-    .faq-seccion{
-        padding: 70px 50px;
-    }
-
-    .footer-contenido{
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 35px;
-    }
-
-    .footer-marca p{
-        margin: auto;
-    }
-
-    .footer-links{
-        align-items: center;
-    }
 }
 
 /* CELULAR */
@@ -1657,6 +2563,8 @@ img{
     .contenedor{
         grid-template-rows: auto 1fr auto;
     }
+
+    /* HEADER */
 
     .header-contenido{
         width: 100%;
@@ -1720,6 +2628,8 @@ img{
         display: none;
     }
 
+    /* INICIO */
+
     .inicio-color{
         padding: 45px 20px 60px 20px;
     }
@@ -1762,6 +2672,8 @@ img{
         height: auto;
         border-radius: 22px;
     }
+
+    /* SECCION ¿POR QUE ELEGIRNOS? */
 
     .seccion-elegirnos{
         padding: 55px 22px;
@@ -1834,6 +2746,8 @@ img{
         border-radius: 16px;
     }
 
+    /* CARRUSEL */
+
     .plantillas-carrusel{
         padding: 55px 0 70px 0;
         overflow: hidden;
@@ -1890,6 +2804,8 @@ img{
         right: 6px !important;
     }
 
+    /* PLANTILLAS VERTICALES */
+
     .informacion3{
         grid-template-columns: 1fr;
         padding: 45px 20px;
@@ -1928,6 +2844,8 @@ img{
         line-height: 1.7;
     }
 
+    /* GENERADOR */
+
     .generador-contenido{
         width: 92%;
         grid-template-columns: 1fr;
@@ -1955,6 +2873,8 @@ img{
         font-size: 14px;
         line-height: 1.7;
     }
+
+    /* PLANES */
 
     .titulo-planes{
         flex-direction: column;
@@ -1993,28 +2913,5 @@ img{
 
     .footer-links{
         align-items: center;
-    }
-}
-
-@media (max-width: 380px){
-
-    .bienvenida h1{
-        font-size: 29px;
-    }
-
-    .menu a{
-        font-size: 13px;
-        padding: 8px;
-    }
-
-    .titulo-elegirnos h1,
-    .division h1,
-    .divisions h1,
-    .divisionss h1{
-        font-size: 27px;
-    }
-
-    .izquierda3 img{
-        height: 210px;
     }
 }
