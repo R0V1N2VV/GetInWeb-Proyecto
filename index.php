@@ -16,15 +16,10 @@ if (isset($_SESSION["usuario_id"])) {
     <link rel="stylesheet" href="estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
- <div class="contenedor">
-
-    
- <header>
+<header id="inicio">
     <div class="header-contenido">
 
         <div class="marca">
@@ -34,28 +29,38 @@ if (isset($_SESSION["usuario_id"])) {
 
         <nav class="menu">
             <ul>
-                <ol><a href="">Inicio</a></ol>
-                <ol><a href="">Servicios</a></ol>
-                <ol><a href="">Portafolio</a></ol>
-                <ol><a href="">Contacto</a></ol>
+                <ol><a href="#inicio">Inicio</a></ol>
+                <ol><a href="#servicios">Servicios</a></ol>
+                <ol><a href="#portafolio">Portafolio</a></ol>
+                <ol><a href="#contacto">Contacto</a></ol>
             </ul>
         </nav>
 
-        <a href="<?php echo $linkExplorador; ?>" class="btn-header">Crear ahora</a>
+        <div class="usuario-nav">
+            <?php if (isset($_SESSION["usuario_id"])): ?>
+                <div class="user-profile">
+                    <a href="usuario.php" class="user-name" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                     <strong><?php echo htmlspecialchars($_SESSION['usuario'] ?? 'Usuario'); ?></strong> 👤
+                    </a>
+                </div>
+            <?php else: ?>
+                <a href="login.php" class="btn-header">Iniciar Sesión</a>
+            <?php endif; ?>
+        </div>
 
     </div>
 </header>
   
+ <div class="contenedor">
 
     <main>
-    <!-- bienvenida -->
     <div class="inicio-color">
     
         <div class="bienvenida">
             <h1>Crea una página web de una forma nueva</h1>
             <h3>Aquí te damos una experiencia única para crear tu página web de manera fácil y rápida, junto a nuestro generador de planillas personalizadas</h3>
   
-            <button class="boton"><strong>Comenzar Ya</strong></button>
+            <a href="Personalizador/index.html" class="boton" style="text-decoration: none; display: inline-block; text-align: center;"><strong>Comenzar Ya</strong></a>
         </div>
     
         <div class="imagen-inicio">
@@ -63,8 +68,7 @@ if (isset($_SESSION["usuario_id"])) {
         </div>
     </div>
 
-    <!--division-->
-  <section class="seccion-elegirnos aparecer">
+    <section id="servicios" class="seccion-elegirnos aparecer">
 
     <div class="titulo-elegirnos">
         <span class="decoracion-titulo"></span>
@@ -112,7 +116,7 @@ if (isset($_SESSION["usuario_id"])) {
 </section>
 
 
-    <section class="plantillas-carrusel aparecer">
+    <section id="portafolio" class="plantillas-carrusel aparecer">
 
     <div class="titulo-info2">
         <h1>Plantillas Web creadas para tu uso y lograr tus mayores ambiciones</h1>
@@ -180,7 +184,7 @@ if (isset($_SESSION["usuario_id"])) {
             <br><br>
             <p>Encuentra la plantilla perfecta para tu proyecto. Navega entre cientos de diseños profesionales, personalízalos a tu gusto y crea una página web única que refleje tu marca y tus objetivos.</p>
             <br><br><br>
-            <a href="<?php echo $linkExplorador; ?>" class="boton"><strong>Explorar Plantillas</strong></a>
+            <a href="explorador.php" class="boton"><strong>Explorar Plantillas</strong></a>
         </div>
     
     </div>
@@ -208,7 +212,7 @@ if (isset($_SESSION["usuario_id"])) {
 
    
 
-<section class="seccion-planes aparecer">
+<section id="planes" class="seccion-planes aparecer">
 
     <div class="divisionss">
         <div class="titulo-planes">
@@ -345,7 +349,7 @@ if (isset($_SESSION["usuario_id"])) {
 
 </section>
 
-<section class="faq-seccion aparecer">
+<section id="faq" class="faq-seccion aparecer">
 
     <div class="faq-titulo">
         <h1>Preguntas frecuentes</h1>
@@ -390,48 +394,39 @@ if (isset($_SESSION["usuario_id"])) {
 
 </section>
 
-
+    <div id="contacto"></div>
     </main>  
 
-
     <footer>
+        <div class="footer-contenido">
+            <div class="footer-marca">
+                <h2>GetInWeb</h2>
+                <p>Crea páginas web modernas, rápidas y personalizadas con herramientas simples e intuitivas.</p>
+            </div>
 
-    <div class="footer-contenido">
+            <div class="footer-links">
+                <h3>Navegación</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#contacto">Contacto</a>
+            </div>
 
-        <div class="footer-marca">
-            <h2>GetInWeb</h2>
-            <p>
-                Crea páginas web modernas, rápidas y personalizadas con herramientas simples e intuitivas.
-            </p>
+            <div class="footer-links">
+                <h3>Proyecto</h3>
+                <a href="explorador.php">Plantillas</a>
+                <a href="Personalizador/index.html">Generador Web</a>
+                <a href="#planes">Planes</a>
+                <a href="#faq">Preguntas frecuentes</a>
+            </div>
         </div>
 
-        <div class="footer-links">
-            <h3>Navegación</h3>
-            <a href="">Inicio</a>
-            <a href="">Servicios</a>
-            <a href="">Portafolio</a>
-            <a href="">Contacto</a>
+        <div class="footer-final">
+            <p>© 2026 - ∞ Todos los derechos reservados a Felipe Lopez Mochi</p>
         </div>
+    </footer>
 
-        <div class="footer-links">
-            <h3>Proyecto</h3>
-            <a href="">Plantillas</a>
-            <a href="">Generador Web</a>
-            <a href="">Planes</a>
-            <a href="">Preguntas frecuentes</a>
-        </div>
-
-    </div>
-
-    <div class="footer-final">
-        <p>© 2026 - ∞ Todos los derechos reservados a Felipe Lopez Mochi</p>
-    </div>
-
-</footer>
-
- </div>
-
- <script>
+ </div> <script>
     const elementos = document.querySelectorAll('.aparecer');
 
     const mostrarElemento = new IntersectionObserver((entradas) => {
