@@ -1,35 +1,29 @@
 <?php
-// Forzar a PHP a mostrar errores si algo falla
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 session_start();
-include("conexion.php"); // Conexión a la base de datos
+include("conexion.php");
 
-// Validamos que el usuario esté logueado mediante el ID real
-if (!isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION["usuario_id"])) {
     header("Location: login.php");
     exit();
 }
 
-// Asignamos las variables de sesión que guardamos en el login
-$nombre_usuario = $_SESSION['usuario'] ?? 'Usuario'; 
-$email_usuario = $_SESSION['email'] ?? 'No disponible'; 
-$fecha_registro = $_SESSION['fecha_registro'] ?? 'No disponible';
+$usuarioId = $_SESSION["usuario_id"];
+$usuarioNombre = $_SESSION["usuario_nombre"] ?? "Usuario";
+$usuarioEmail = $_SESSION["usuario_email"] ?? "";
 
-// --- LÓGICA PARA CONTAR LAS PLANTILLAS DEL USUARIO ---
-$cantidad_plantillas = 0;
-$id_usuario = $_SESSION["usuario_id"];
+$consulta = $conexion->prepare("SELECT fecha_registro FROM usuarios WHERE id = ?");
+$consulta->bind_param("i", $usuarioId);
+$consulta->execute();
+$resultado = $consulta->get_result();
+$usuario = $resultado->fetch_assoc();
+$fechaRegistro = $usuario["fecha_registro"] ?? "2026";
 
-$stmt_count = $conexion->prepare("SELECT COUNT(*) AS total FROM plantillas WHERE id_usuario = ?");
-$stmt_count->bind_param("i", $id_usuario);
-$stmt_count->execute();
-$res_count = $stmt_count->get_result();
-
-if ($row_count = $res_count->fetch_assoc()) {
-    $cantidad_plantillas = $row_count["total"];
-}
-$stmt_count->close();
+$consultaPlantillas = $conexion->prepare("SELECT COUNT(*) AS total FROM plantillas WHERE id_usuario = ?");
+$consultaPlantillas->bind_param("i", $usuarioId);
+$consultaPlantillas->execute();
+$resultadoPlantillas = $consultaPlantillas->get_result();
+$datosPlantillas = $resultadoPlantillas->fetch_assoc();
+$totalPlantillas = $datosPlantillas["total"] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,17 +31,15 @@ $stmt_count->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil - GetInWeb</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="php_extra.css"> 
+    <link rel="stylesheet" href="php_extra.css?v=<?php echo filemtime('php_extra.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <div class="header-contenido">
-
         <div class="marca">
             <h2 class="logotipo">GetInWeb</h2>
             <span>Web Generator</span>
@@ -56,49 +48,58 @@ $stmt_count->close();
         <nav class="menu">
             <ul>
                 <ol><a href="index.php">Inicio</a></ol>
-                <ol><a href="explorador.php">Plantillas</a></ol>
+                <ol><a href="explorador.php">Explorador</a></ol>
                 <ol><a href="Personalizador/index.html">Generador</a></ol>
             </ul>
         </nav>
 
-        <div class="usuario-nav">
-            <div class="user-profile">
-                <a href="usuario.php" class="user-name" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
-                    <strong><?php echo htmlspecialchars($nombre_usuario); ?></strong> 👤
-                </a>
-            </div>
-        </div>
-
+        <a href="logout.php" class="btn-cerrar">Cerrar sesión</a>
     </div>
 </header>
 
-<main class="auth-main">
-    <section class="auth-card" style="max-width: 500px;">
-        <div class="auth-titulo">
-            <h1>Mi Perfil</h1>
-            <p>Gestioná la información de tu cuenta en GetInWeb.</p>
+<main class="perfil-main">
+    <section class="perfil-container">
+        <div class="avatar-simulado">
+            <?php echo strtoupper(substr(htmlspecialchars($usuarioNombre), 0, 1)); ?>
         </div>
 
-        <div class="info-perfil" style="text-align: left; margin: 20px 0; font-size: 16px; line-height: 2;">
-            <p style="margin-bottom: 12px;">
-                <strong> Nombre de usuario:</strong> 
-                <span style="color: #555;"><?php echo htmlspecialchars($nombre_usuario); ?></span>
-            </p>
-            <p style="margin-bottom: 12px;">
-                <strong> Correo electrónico:</strong> 
-                <span style="color: #555;"><?php echo htmlspecialchars($email_usuario); ?></span>
-            </p>
-            <p style="margin-bottom: 12px;">
-                <strong> Miembro desde:</strong> 
-                <span style="color: #555;"><?php echo htmlspecialchars($fecha_registro); ?></span>
-            </p>
-            <p style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                <strong> Plantillas subitdas:</strong> 
-                <span class="badge-cantidad" style="background-color: #7b61ff; color: #ffffff; font-weight: bold; padding: 2px 10px; border-radius: 12px; font-size: 14px;">
-                    <?php echo $cantidad_plantillas; ?>
-                </span>
-            </p>
+        <h1>Perfil de Usuario</h1>
+        <p class="perfil-subtitulo">Gestioná la información de tu cuenta corporativa.</p>
+
+        <div class="perfil-info">
+            <div class="info-item">
+                <label>Nombre de usuario</label>
+                <p><?php echo htmlspecialchars($usuarioNombre); ?></p>
+            </div>
+
+            <div class="info-item">
+                <label>Correo electrónico</label>
+                <p><?php echo htmlspecialchars($usuarioEmail); ?></p>
+            </div>
+
+            <div class="info-item">
+                <label>ID de usuario</label>
+                <p><?php echo htmlspecialchars($usuarioId); ?></p>
+            </div>
+
+            <div class="info-item">
+                <label>Miembro desde</label>
+                <p><?php echo htmlspecialchars($fechaRegistro); ?></p>
+            </div>
+
+            <div class="info-item">
+                <label>Plantillas subidas</label>
+                <p><?php echo htmlspecialchars($totalPlantillas); ?></p>
+            </div>
         </div>
 
-        <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
-            <a href="expl
+        <div class="perfil-acciones">
+            <a href="explorador.php" class="btn-generador">Ir al Explorador</a>
+            <a href="Personalizador/index.html" class="btn-secundario">Ir al Generador</a>
+            <a href="logout.php" class="btn-cerrar">Cerrar sesión</a>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
