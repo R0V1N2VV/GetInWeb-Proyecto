@@ -1,59 +1,90 @@
 <?php
-include("conexion.php");
 
-if (isset($_GET["id"])) {
-    $id = intval($_GET["id"]);
 
-    $consulta = $conexion->prepare("SELECT tipo_mime, datos, ruta_archivo FROM imagenes WHERE id = ?");
-    $consulta->bind_param("i", $id);
+require_once "conexion.php";
 
-} elseif (isset($_GET["clave"])) {
-    $clave = $_GET["clave"];
+use App\DAO\ImagenDAO;
+use App\Servicios\ServicioRegistroImagenes;
 
-    $consulta = $conexion->prepare("SELECT tipo_mime, datos, ruta_archivo FROM imagenes WHERE clave = ?");
-    $consulta->bind_param("s", $clave);
 
-} else {
-    http_response_code(404);
-    exit("Imagen no encontrada");
+// 1. Buscar la imagen por ID o por clave
+
+
+// Usamos el DAO para buscar el registro de la imagen en la base.
+$imagenDAO = new ImagenDAO($conexion);
+$imagen = null;
+
+if (isset($_GET['id'])) {
+    $imagen = $imagenDAO->buscarPorId(intval($_GET['id']));
 }
 
-$consulta->execute();
-$resultado = $consulta->get_result();
+if ($imagen === null && isset($_GET['clave'])) {
+    $clave = $_GET['clave'];
+    $imagen = $imagenDAO->buscarPorClave($clave);
 
-if ($resultado->num_rows === 0) {
-    http_response_code(404);
-    exit("Imagen no encontrada en la base de datos");
+    // Si todavía no está registrada, se intenta registrar automáticamente.
+    if ($imagen === null) {
+        $registroImagenes = new ServicioRegistroImagenes($conexion);
+        $registroImagenes->registrarImagenesDelSitio();
+
+        $imagen = $imagenDAO->buscarPorClave($clave);
+    }
 }
 
-$imagen = $resultado->fetch_assoc();
+if ($imagen === null) {
+    http_response_code(404);
+    exit('Imagen no encontrada en la base de datos.');
+}
 
-if (!empty($imagen["datos"])) {
-    header("Content-Type: " . $imagen["tipo_mime"]);
-    echo $imagen["datos"];
+
+// 2. Preparar datos posibles de imagen
+
+
+$mime = $imagen['tipo_mime'] ?? $imagen['mime'] ?? 'image/*';
+$datos = $imagen['datos'] ?? null;
+$contenido = $imagen['contenido'] ?? null;
+$ruta = $imagen['ruta_archivo'] ?? '';
+$url = $imagen['url'] ?? '';
+
+
+// 3. Si la imagen está guardada como BLOB, se imprime directo
+
+if (!empty($datos)) {
+    header('Content-Type: ' . $mime);
+    echo $datos;
     exit();
 }
 
-if (!empty($imagen["ruta_archivo"])) {
-    $ruta = $imagen["ruta_archivo"];
-
-    if (str_starts_with($ruta, "http://") || str_starts_with($ruta, "https://")) {
-        header("Location: " . $ruta);
-        exit();
-    }
-
-    $rutaCompleta = __DIR__ . "/" . $ruta;
-
-    if (!file_exists($rutaCompleta)) {
-        http_response_code(404);
-        exit("El archivo está registrado en la base, pero no existe en la carpeta: " . $ruta);
-    }
-
-    header("Content-Type: " . $imagen["tipo_mime"]);
-    readfile($rutaCompleta);
+if (!empty($contenido)) {
+    header('Content-Type: ' . $mime);
+    echo $contenido;
     exit();
 }
 
-http_response_code(404);
-exit("La imagen existe en la base, pero no tiene datos ni ruta");
-?>
+
+// 4. Si la imagen está guardada como ruta o URL
+
+
+$origen = !empty($ruta) ? $ruta : $url;
+
+if ($origen === '') {
+    http_response_code(404);
+    exit('La imagen existe en la base, pero no tiene datos ni ruta.');
+}
+
+if (str_starts_with($origen, 'http://') || str_starts_with($origen, 'https://')) {
+    header('Location: ' . $origen);
+    exit();
+}
+
+$origen = str_replace('\\', '/', $origen);
+$rutaCompleta = __DIR__ . '/' . $origen;
+
+if (!file_exists($rutaCompleta)) {
+    http_response_code(404);
+    exit('El archivo está registrado en la base, pero no existe en la carpeta: ' . $origen);
+}
+
+header('Content-Type: ' . $mime);
+readfile($rutaCompleta);
+exit();

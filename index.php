@@ -1,11 +1,14 @@
 <?php
-session_start();
 
-if (isset($_SESSION["usuario_id"])) {
-    $linkExplorador = "explorador.php";
-} else {
-    $linkExplorador = "login.php";
-}
+require_once "conexion.php";
+
+use App\Servicios\ServicioAutenticacion;
+use App\Servicios\ServicioRegistroImagenes;
+
+ServicioAutenticacion::iniciarSesionSiHaceFalta();
+(new ServicioRegistroImagenes($conexion))->registrarImagenesDelSitio();
+
+$linkExplorador = ServicioAutenticacion::estaLogueado() ? "explorador.php" : "login.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +26,7 @@ if (isset($_SESSION["usuario_id"])) {
 <body>
  <div class="contenedor">
 
-    
+
  <header>
     <div class="header-contenido">
 
@@ -35,9 +38,7 @@ if (isset($_SESSION["usuario_id"])) {
         <nav class="menu">
             <ul>
                 <ol><a href="">Inicio</a></ol>
-                <ol><a href="">Servicios</a></ol>
-                <ol><a href="">Portafolio</a></ol>
-                <ol><a href="">Contacto</a></ol>
+                <ol><a href="<?php echo $linkExplorador; ?>">Explorador</a></ol>
             </ul>
         </nav>
 
@@ -45,19 +46,19 @@ if (isset($_SESSION["usuario_id"])) {
 
     </div>
 </header>
-  
+
 
     <main>
     <!-- bienvenida -->
     <div class="inicio-color">
-    
+
         <div class="bienvenida">
             <h1>Crea una página web de una forma nueva</h1>
             <h3>Aquí te damos una experiencia única para crear tu página web de manera fácil y rápida, junto a nuestro generador de planillas personalizadas</h3>
-  
+
             <a href="<?php echo $linkExplorador; ?>" class="boton"><strong>Comenzar Ya</strong></a>
         </div>
-    
+
         <div class="imagen-inicio">
             <img src="imagen.php?clave=inicio_wix" alt="Imagen de bienvenida"> 
         </div>
@@ -147,13 +148,13 @@ if (isset($_SESSION["usuario_id"])) {
 
 
     <div class="informacion3 aparecer">
-        
+
         <div class="izquierda3">
-            
+
             <div class="pri-izquierda3">
                 <img src="imagen.php?clave=info3_1" alt="Plantilla ejemplo">
             </div>
-            
+
             <div class="seg-izquierda3"> 
                 <img src="imagen.php?clave=info3_2" alt="Plantilla ejemplo">
             </div>
@@ -164,7 +165,7 @@ if (isset($_SESSION["usuario_id"])) {
 
         </div>
 
-    
+
         <div class="derecha3">
             <h1>Ve nuestro extenso catalogo de plantillas ya diseñadas</h1>
             <br>
@@ -176,7 +177,7 @@ if (isset($_SESSION["usuario_id"])) {
             <br><br><br>
             <a href="<?php echo $linkExplorador; ?>" class="boton"><strong>Explorar Plantillas</strong></a>
         </div>
-    
+
     </div>
 
     <div class="divisions aparecer">
@@ -200,129 +201,6 @@ if (isset($_SESSION["usuario_id"])) {
     </div>
 
 
-   
-
-<section class="seccion-planes aparecer">
-
-    <div class="divisionss">
-        <div class="titulo-planes">
-            <div>
-                <h1>Planes de suscripción</h1>
-                <p>Elegí la opción que mejor se adapte a tu proyecto.</p>
-            </div>
-
-            <button class="btn-ver-planes" id="btnPlanes">
-                Ver planes ↓
-            </button>
-        </div>
-    </div>
-
-    <div class="planes-contenido" id="planesContenido">
-
-        <div class="card-plan gratis">
-            <div class="plan-top">
-                <h2>Gratuito</h2>
-
-                <div class="precio">
-                    <span class="simbolo">$</span>
-                    <span class="numero">0</span>
-                    <span class="periodo">/ mes</span>
-                </div>
-
-                <p class="descripcion-plan">
-                    Ideal para empezar a explorar la plataforma.
-                </p>
-            </div>
-
-            <button class="boton-plan boton-outline">Tu plan actual</button>
-
-            <div class="plan-info">
-                <p>✦ Acceso a plantillas básicas</p>
-                <p>✦ Soporte por correo electrónico</p>
-                <p>✦ Actualizaciones limitadas</p>
-                <p>✦ Personalización inicial</p>
-            </div>
-        </div>
-
-        <div class="card-plan basico destacada">
-            <div class="plan-top">
-                <h2>Básico</h2>
-
-                <div class="precio">
-                    <span class="simbolo">$</span>
-                    <span class="numero">10</span>
-                    <span class="periodo">/ mes</span>
-                </div>
-
-                <p class="descripcion-plan">
-                    Más herramientas para crear un sitio más completo.
-                </p>
-            </div>
-
-            <button class="boton-plan boton-violeta">Elegir plan</button>
-
-            <div class="plan-info">
-                <p>✦ Más plantillas disponibles</p>
-                <p>✦ Personalización avanzada</p>
-                <p>✦ Soporte por correo electrónico</p>
-                <p>✦ Recursos extra de diseño</p>
-                <p>✦ Mejor experiencia de edición</p>
-            </div>
-        </div>
-
-        <div class="card-plan premium">
-            <div class="plan-top">
-                <h2>Premium</h2>
-
-                <div class="precio">
-                    <span class="simbolo">$</span>
-                    <span class="numero">20</span>
-                    <span class="periodo">/ mes</span>
-                </div>
-
-                <p class="descripcion-plan">
-                    Para quienes buscan acceso total y herramientas premium.
-                </p>
-            </div>
-
-            <button class="boton-plan boton-claro">Elegir plan</button>
-
-            <div class="plan-info">
-                <p>✦ Acceso a todas las plantillas</p>
-                <p>✦ Soporte prioritario 24/7</p>
-                <p>✦ Actualizaciones ilimitadas</p>
-                <p>✦ Herramientas premium</p>
-                <p>✦ Exportación avanzada</p>
-            </div>
-        </div>
-
-        <div class="card-plan empresarial">
-            <div class="plan-top">
-                <h2>Empresarial</h2>
-
-                <div class="precio precio-texto">
-                    <span class="texto-precio">Precio según uso</span>
-                </div>
-
-                <p class="descripcion-plan">
-                    Soluciones pensadas para equipos y negocios.
-                </p>
-            </div>
-
-            <button class="boton-plan boton-claro">Contactar</button>
-
-            <div class="plan-info">
-                <p>✦ Gestión para múltiples usuarios</p>
-                <p>✦ Soporte dedicado 24/7</p>
-                <p>✦ Herramientas avanzadas</p>
-                <p>✦ Escalabilidad para empresas</p>
-                <p>✦ Administración centralizada</p>
-            </div>
-        </div>
-
-    </div>
-
-</section>
 
 <section class="mensaje-final aparecer">
 
@@ -406,16 +284,15 @@ if (isset($_SESSION["usuario_id"])) {
 
         <div class="footer-links">
             <h3>Proyecto</h3>
-            <a href="">Plantillas</a>
-            <a href="">Generador Web</a>
-            <a href="">Planes</a>
+            <ol><a href="<?php echo $linkExplorador; ?>">Explorador</a></ol>
+            <ol><a href="Personalizador/index.html">Generador</a></ol>
             <a href="">Preguntas frecuentes</a>
         </div>
 
     </div>
 
     <div class="footer-final">
-        <p>© 2026 GetInWeb - Todos los derechos reservados</p>
+        <p>© 2026 - ∞ Todos los derechos reservados a Felipe Lopez Mochi</p>
     </div>
 
 </footer>

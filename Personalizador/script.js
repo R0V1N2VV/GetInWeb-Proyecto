@@ -1,3 +1,8 @@
+/*
+    Lógica del generador personalizado.
+    Toma las opciones elegidas por el usuario y arma un archivo HTML descargable.
+*/
+
 document
 const configuracion = {
     tipo: "",

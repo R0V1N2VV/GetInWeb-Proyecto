@@ -1,36 +1,46 @@
 <?php
-session_start();
-include("conexion.php");
+// VERSIÓN COMENTADA PARA ESTUDIO.
 
-if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php");
-    exit();
+/*
+    Perfil del usuario.
+    Muestra datos básicos de la cuenta y un resumen de sus plantillas.
+*/
+
+require_once "conexion.php";
+
+use App\DAO\UsuarioDAO;
+use App\Servicios\ServicioAutenticacion;
+
+// =========================================================
+// 1. Sesión y datos del usuario
+// =========================================================
+
+$auth = new ServicioAutenticacion($conexion);
+$usuario = $auth->requireLogin();
+
+$usuarioDAO = new UsuarioDAO($conexion);
+$totalPlantillas = $usuarioDAO->contarPlantillas(intval($usuario['id']));
+
+$fechaRegistro = $usuario['fecha_registro'] ?? '2026';
+$inicialUsuario = strtoupper(substr($usuario['nombre'] ?? 'U', 0, 1));
+
+// =========================================================
+// 2. Función auxiliar para imprimir HTML seguro
+// =========================================================
+
+function e($valor): string
+{
+    return htmlspecialchars((string) $valor, ENT_QUOTES, 'UTF-8');
 }
-
-$usuarioId = $_SESSION["usuario_id"];
-$usuarioNombre = $_SESSION["usuario_nombre"] ?? "Usuario";
-$usuarioEmail = $_SESSION["usuario_email"] ?? "";
-
-$consulta = $conexion->prepare("SELECT fecha_registro FROM usuarios WHERE id = ?");
-$consulta->bind_param("i", $usuarioId);
-$consulta->execute();
-$resultado = $consulta->get_result();
-$usuario = $resultado->fetch_assoc();
-$fechaRegistro = $usuario["fecha_registro"] ?? "2026";
-
-$consultaPlantillas = $conexion->prepare("SELECT COUNT(*) AS total FROM plantillas WHERE id_usuario = ?");
-$consultaPlantillas->bind_param("i", $usuarioId);
-$consultaPlantillas->execute();
-$resultadoPlantillas = $consultaPlantillas->get_result();
-$datosPlantillas = $resultadoPlantillas->fetch_assoc();
-$totalPlantillas = $datosPlantillas["total"] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mi Perfil - GetInWeb</title>
+
     <link rel="stylesheet" href="php_extra.css?v=<?php echo filemtime('php_extra.css'); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,44 +69,42 @@ $totalPlantillas = $datosPlantillas["total"] ?? 0;
 
 <main class="perfil-main">
     <section class="perfil-container">
-        <div class="avatar-simulado">
-            <?php echo strtoupper(substr(htmlspecialchars($usuarioNombre), 0, 1)); ?>
-        </div>
+        <div class="avatar-simulado"><?php echo e($inicialUsuario); ?></div>
 
         <h1>Perfil de Usuario</h1>
-        <p class="perfil-subtitulo">Gestioná la información de tu cuenta corporativa.</p>
+        <p class="perfil-subtitulo">Gestioná la información de tu cuenta.</p>
 
         <div class="perfil-info">
             <div class="info-item">
                 <label>Nombre de usuario</label>
-                <p><?php echo htmlspecialchars($usuarioNombre); ?></p>
+                <p><?php echo e($usuario['nombre']); ?></p>
             </div>
 
             <div class="info-item">
                 <label>Correo electrónico</label>
-                <p><?php echo htmlspecialchars($usuarioEmail); ?></p>
+                <p><?php echo e($usuario['email']); ?></p>
             </div>
 
             <div class="info-item">
-                <label>ID de usuario</label>
-                <p><?php echo htmlspecialchars($usuarioId); ?></p>
+                <label>Rol</label>
+                <p><?php echo e($usuario['rol'] ?? 'usuario'); ?></p>
             </div>
 
             <div class="info-item">
                 <label>Miembro desde</label>
-                <p><?php echo htmlspecialchars($fechaRegistro); ?></p>
+                <p><?php echo e($fechaRegistro); ?></p>
             </div>
 
             <div class="info-item">
                 <label>Plantillas subidas</label>
-                <p><?php echo htmlspecialchars($totalPlantillas); ?></p>
+                <p><?php echo intval($totalPlantillas); ?></p>
             </div>
         </div>
 
         <div class="perfil-acciones">
-            <a href="explorador.php" class="btn-generador">Ir al Explorador</a>
-            <a href="Personalizador/index.html" class="btn-secundario">Ir al Generador</a>
-            <a href="logout.php" class="btn-cerrar">Cerrar sesión</a>
+            <a href="explorador.php" class="btn-header btn-secundario">Ir al Explorador</a>
+            <a href="Personalizador/index.html" class="btn-header">Ir al Generador</a>
+            <a href="logout.php" class="btn-header btn-logout">Cerrar sesión</a>
         </div>
     </section>
 </main>

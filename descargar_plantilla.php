@@ -1,66 +1,95 @@
 <?php
-session_start();
-include("conexion.php");
 
-if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php");
+
+require_once "conexion.php";
+
+use App\DAO\ArchivoPlantillaDAO;
+use App\DAO\PlantillaDAO;
+use App\Servicios\ServicioAutenticacion;
+
+
+// 1. Verificar sesión y validar ID
+
+
+$auth = new ServicioAutenticacion($conexion);
+$auth->requireLogin();
+
+if (!isset($_GET['id'])) {
+    header('Location: explorador.php');
     exit();
 }
 
-if (!isset($_GET["id"])) {
-    header("Location: explorador.php");
-    exit();
+
+// 2. Verificar que ZipArchive esté disponible
+
+
+// ZipArchive es la extensión de PHP necesaria para crear archivos .zip.
+if (!class_exists('ZipArchive')) {
+    die('.');
 }
 
-if (!class_exists("ZipArchive")) {
-    die("ZipArchive no está activado en PHP. Activá la extensión zip en XAMPP para descargar el código como .zip.");
+
+// 3. Buscar la plantilla y sus archivos
+
+
+$idPlantilla = intval($_GET['id']);
+
+$plantillaDAO = new PlantillaDAO($conexion);
+$archivoDAO = new ArchivoPlantillaDAO($conexion);
+
+$plantilla = $plantillaDAO->buscarPorIdConUsuario($idPlantilla);
+
+if (!$plantilla) {
+    die('Plantilla no encontrada.');
 }
 
-$idPlantilla = intval($_GET["id"]);
+$archivos = $archivoDAO->buscarPorPlantilla($idPlantilla);
 
-$consulta = $conexion->prepare("SELECT * FROM plantillas WHERE id = ?");
-$consulta->bind_param("i", $idPlantilla);
-$consulta->execute();
-$resultado = $consulta->get_result();
-
-if ($resultado->num_rows === 0) {
-    die("Plantilla no encontrada.");
+if (count($archivos) === 0) {
+    die('Esta plantilla no tiene archivos para descargar.');
 }
 
-$plantilla = $resultado->fetch_assoc();
 
-$consultaArchivos = $conexion->prepare("SELECT * FROM archivos_plantilla WHERE id_plantilla = ?");
-$consultaArchivos->bind_param("i", $idPlantilla);
-$consultaArchivos->execute();
-$archivos = $consultaArchivos->get_result();
+// 4. Crear el archivo ZIP temporal
 
-$nombreSeguro = preg_replace('/[^a-zA-Z0-9_-]/', '_', $plantilla["nombre"]);
-$nombreZip = "plantilla_" . $idPlantilla . "_" . $nombreSeguro . ".zip";
+
+$nombreSeguro = preg_replace('/[^a-zA-Z0-9_-]/', '_', $plantilla['nombre']);
+$nombreZip = 'plantilla_' . $idPlantilla . '_' . $nombreSeguro . '.zip';
 $rutaTemporal = sys_get_temp_dir() . DIRECTORY_SEPARATOR . $nombreZip;
 
+// Creamos el objeto que arma el ZIP.
 $zip = new ZipArchive();
 
 if ($zip->open($rutaTemporal, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
-    die("No se pudo crear el archivo ZIP.");
+    die('No se pudo crear el archivo ZIP.');
 }
 
-while ($archivo = $archivos->fetch_assoc()) {
-    $ruta = $archivo["ruta_archivo"];
+$agregados = 0;
+
+foreach ($archivos as $archivo) {
+    $ruta = $archivo['ruta_archivo'];
 
     if (file_exists($ruta)) {
-        $zip->addFile($ruta, $archivo["nombre_original"]);
+        $zip->addFile($ruta, basename($archivo['nombre_original']));
+        $agregados++;
     }
 }
 
 $zip->close();
 
-header("Content-Type: application/zip");
-header("Content-Disposition: attachment; filename=\"$nombreZip\"");
-header("Content-Length: " . filesize($rutaTemporal));
-header("Pragma: no-cache");
-header("Expires: 0");
+if ($agregados === 0) {
+    die('No se pudo agregar ningún archivo al ZIP. Revisá uploads/plantillas.');
+}
+
+
+// 5. Enviar el ZIP al navegador
+
+header('Content-Type: application/zip');
+header('Content-Disposition: attachment; filename="' . $nombreZip . '"');
+header('Content-Length: ' . filesize($rutaTemporal));
+header('Pragma: no-cache');
+header('Expires: 0');
 
 readfile($rutaTemporal);
 unlink($rutaTemporal);
 exit();
-?>
